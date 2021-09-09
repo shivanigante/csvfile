@@ -1,0 +1,13 @@
+table{
+    width:75%;
+    margin:40px auto;
+  }
+  table tr td , table tr, table th{
+    border-collapse: collapse;
+    border:1px solid #ccc;
+    font-size:14px;
+  }
+ .center{
+    width:200px;
+    margin:auto
+  } 

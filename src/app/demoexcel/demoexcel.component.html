@@ -1,0 +1,53 @@
+ <!-- <div class="center">
+    <br>
+    <input type="file" (change)="onChangeFile($event)" multiple="false" align="center"/><br>
+
+
+Filter here! <input type="text" placeholder="Search" [(ngModel)]="modifiedString" align="center"/>
+</div>
+<table cellpadding='20' *ngIf="data.length>0">
+     <thead>
+        <tr>
+          <th>First name</th>
+          <th>Sur name</th>
+          <th>Issue count</th>
+          <th>Date of birth</th>
+
+        </tr>
+    </thead> 
+    <tbody>
+        <tr align ="center" *ngFor="let dat of data | search:modifiedString">
+
+           <td>{{dat['First name']}}</td>
+           <td>{{dat['Sur name']}}</td>
+           <td>{{dat['Issue count']}}</td>
+           <td>{{dat['Date of birth']}}</td>
+        </tr>
+    </tbody>
+</table>  -->
+<br>
+<div class="center">
+<div>
+    <input (change)="onChangeFile($event)" accept=".csv , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet , application/vnd.ms-excel" 
+    type="file" name="csvFile" id="csvFile">
+</div>
+<div *ngIf="arrayData.length > 0">
+    Filter here!<input type="text" [(ngModel)]="filterString" placeholder="search">
+    <select [(ngModel)]="filterOption" name="filterOption" id="filterOption">
+        <option *ngFor="let key of arrayDataKeys" [value]="key">{{key}}</option>
+    </select>
+</div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let key of arrayDataKeys" >{{ key }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of arrayData | search : filterString : filterOption">
+            <td *ngFor="let key of arrayDataKeys" >{{ data[key] }}</td>
+            
+        </tr>
+    </tbody>
+</table>
